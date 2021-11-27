@@ -3,7 +3,7 @@ from .models import Movies
 
 class movie_serializer(serializers.Serializer):
     id = serializers.IntegerField()
-    name = serializers.CharField()
+    name = serializers.CharField([validator=[validator.function_name])
     def validate_name(self, name):
         if len(name)<2:
             return serializers.ValidationError('Name too short')
